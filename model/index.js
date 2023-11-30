@@ -3,15 +3,24 @@
 const { Sequelize, DataTypes } = require("sequelize");
 const dotenv = require("dotenv").config();
 
-const sequelize = new Sequelize(process.env.POSTGRES_URL, {
+// db.js
+const sequelize = new Sequelize({
+  database: process.env.DATABASE_NAME,
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD,
+  host: process.env.HOSTNAME,
+  port: process.env.PORT,
   dialect: "postgres",
   dialectOptions: {
     ssl: {
       require: true,
-      rejectUnauthorized: false, // You may need to adjust this based on your PostgreSQL configuration
+      rejectUnauthorized: false,
     },
   },
 });
+
+// Other configurations...
+
 
 sequelize
   .authenticate()
