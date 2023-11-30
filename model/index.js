@@ -3,7 +3,7 @@ const dotenv = require("dotenv").config();
 
 const dbUrl = `postgres://postgres:2602@localhost:5432/user_auth`;
 console.log(
-  `postgres://${process.env.USERNAME_DB}:${process.env.PASSWORD}@${process.env.HOSTNAME}:${process.env.PORT_DB}/${process.env.DATABASE_NAME}`
+  `postgres://${process.env.USERNAME_DB}:${process.env.PASSWORD}@${process.env.HOSTNAME_DB}:${process.env.PORT_DB}/${process.env.DATABASE_NAME}`
 );
 
 // db.js
