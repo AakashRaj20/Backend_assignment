@@ -7,7 +7,7 @@ console.log(
 );
 
 // db.js
-const sequelize = new Sequelize(dbUrl, {
+const sequelize = new Sequelize(process.env.DB_URL, {
   dialect: "postgres",
   dialectOptions: {
     ssl: {
