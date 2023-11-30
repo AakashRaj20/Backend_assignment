@@ -1,16 +1,18 @@
-//importing modules
+// db.js
+
 const { Sequelize, DataTypes } = require("sequelize");
 const dotenv = require("dotenv").config();
 
-//Database connection with dialect of postgres specifying the database we are using
-//port for my database is 5433
-//database name is discover
-const sequelize = new Sequelize(
-  process.env.dbConnectionString,
-  { dialect: "postgres" }
-);
+const sequelize = new Sequelize(process.env.POSTGRES_URL, {
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // You may need to adjust this based on your PostgreSQL configuration
+    },
+  },
+});
 
-//checking if connection is done
 sequelize
   .authenticate()
   .then(() => {
@@ -24,8 +26,7 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-//connecting to model
+// connecting to the model
 db.users = require("./userModel")(sequelize, DataTypes);
 
-//exporting the module
 module.exports = db;
