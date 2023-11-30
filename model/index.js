@@ -1,15 +1,13 @@
-// db.js
-
 const { Sequelize, DataTypes } = require("sequelize");
 const dotenv = require("dotenv").config();
 
+const dbUrl = `postgres://postgres:2602@localhost:5432/user_auth`;
+console.log(
+  `postgres://${process.env.USERNAME_DB}:${process.env.PASSWORD}@${process.env.HOSTNAME}:${process.env.PORT}/${process.env.DATABASE_NAME}`
+);
+
 // db.js
-const sequelize = new Sequelize({
-  database: process.env.DATABASE_NAME,
-  username: process.env.USERNAME,
-  password: process.env.PASSWORD,
-  host: process.env.HOSTNAME,
-  port: process.env.PORT,
+const sequelize = new Sequelize(dbUrl, {
   dialect: "postgres",
   dialectOptions: {
     ssl: {
@@ -21,11 +19,10 @@ const sequelize = new Sequelize({
 
 // Other configurations...
 
-
 sequelize
   .authenticate()
   .then(() => {
-    console.log(`Database connected to discover`);
+    console.log(`Database connected`);
   })
   .catch((err) => {
     console.log(err);

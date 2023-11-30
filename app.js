@@ -9,7 +9,7 @@ const limiter = require("./middleware/rateLimiter");
 const userRoutes = require("./routes/userRoutes");
 
 //setting up your port
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
 
 //assigning the variable app to express
 const app = express();
