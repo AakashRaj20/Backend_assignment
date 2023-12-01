@@ -1,15 +1,10 @@
 //importing modules
 const express = require("express");
 const db = require("../model");
-const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
-//Assigning db.users to User variable
 const User = db.users;
 
-//Function to check if username or email already exist in the database
-//this is to avoid having two users with the same username and email
 const saveUser = async (req, res, next) => {
-  //search the database to see if user exist
   try {
     const username = await User.findOne({
       where: {
@@ -48,7 +43,7 @@ const authenticateUser = async (req, res, next) => {
     }
     jwt.verify(token, process.env.secretKey, (err, user) => {
       if (err) {
-        return res.status(403).json({message: "Invalid Token"});
+        return res.status(403).json({ message: "Invalid Token" });
       }
 
       req.user = user;
@@ -59,7 +54,6 @@ const authenticateUser = async (req, res, next) => {
   }
 };
 
-//exporting module
 module.exports = {
   saveUser,
   authenticateUser,

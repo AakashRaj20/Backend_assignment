@@ -17,8 +17,6 @@ const sequelize = new Sequelize(process.env.DB_URL, {
   },
 });
 
-// Other configurations...
-
 sequelize
   .authenticate()
   .then(() => {

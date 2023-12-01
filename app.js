@@ -25,7 +25,12 @@ db.sequelize.sync({ alter: true }).then(() => {
 });
 
 //routes for the user API
-app.use("/api/protected", userAuth.authenticateUser, limiter.limiter, userRoutes);
+app.use(
+  "/api/protected",
+  userAuth.authenticateUser,
+  limiter.limiter,
+  userRoutes
+);
 app.use("/api/users", userRoutes);
 
 //listening to server connection

@@ -1,11 +1,9 @@
-// userModel.js
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   const User = sequelize.define(
     "users",
     {
-      // Your model attributes go here
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -26,7 +24,7 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
     },
-    { timestamps: true } // or timestamps: false if you don't want createdAt and updatedAt columns
+    { timestamps: true }
   );
 
   return User;
