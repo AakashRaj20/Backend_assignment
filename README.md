@@ -3,6 +3,8 @@
 ## Overview
 This backend application is built using Node.js, Express.js, PostgreSQL, Sequelize ORM, and is deployed on Render. It provides authentication functionality, including user signup, login, and access to a protected endpoint. Additionally, the application implements rate limiting to prevent abuse and enhance security.
 
+### NOTE: The first API request maybe slow as it is hosted on render's free plan but after the first request it will work normally.
+
 ## Local Setup
 Follow these steps to set up the backend locally:
 
