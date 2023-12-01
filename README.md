@@ -117,11 +117,14 @@ This endpoint is an examole endpoint to demonstrate a authenticated api endpoint
   });
 </pre>
 
+### NOTE: To access the protected route, you need to include a bearer token in the Authorization header of your HTTP request. This token is obtained by either signing up a new user or logging in an existing user from the above signin or login api endpoints.
+
 
  1. Endpoint: /api/protected/secureEndpoint
  2. Method: GET
- 3. Description: Returns a message if the request is authenticated and within the rate limit.
- 4. Response:
+ 3. Authorization Header: Bearer Token
+ 4. Description: Returns a message if the request is authenticated and within the rate limit.
+ 5. Response:
     1. Success: status code: 200
     <pre>
       {
